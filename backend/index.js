@@ -18,7 +18,9 @@ app.use("/api/auth", authRoutes);
 // app.use("/api/styles", hijabRoutes);
 app.use("/api/hijabstyles", hijabRoutes);
 app.use("/api/reviews", reviewRoutes);
-
+app.get("/" , (req , res)=>{
+  res.sendres.send("hello")
+})
 // app.use("/api/styless", styleRoutes);
 
 app.listen(process.env.PORT, () =>
