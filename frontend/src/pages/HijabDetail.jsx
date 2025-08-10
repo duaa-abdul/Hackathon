@@ -19,13 +19,15 @@ const HijabDetail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-    await axios.post("http://localhost:8000/api/reviews", {
-      ...reviewData,
-      hijabStyle: id,
-      user: JSON.parse(localStorage.getItem("user"))._id
-    }, {
+   await axios.post(`http://localhost:8000/api/reviews/${id}`, {
+    ...reviewData,
+    hijabStyle: id,
+    user: JSON.parse(localStorage.getItem("user"))._id
+  }, {
       headers: { Authorization: `Bearer ${token}` }
     });
+    const res = await axios.get(`http://localhost:8000/api/reviews/${id}`);
+  setReviews(res.data);
     setReviewData({ rating: 5, comment: "" });
   };
 
